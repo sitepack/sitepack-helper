@@ -11,12 +11,6 @@ function getAllModuleEntries() {
     entries[route.name] = [route.module];
   });
 
-  if (entries.main) {
-    throw new Error('You cannot use "main" as route name! It is reserved!');
-  }
-
-  entries.main = ['./index.js'];
-
   if (entries.layout) {
     throw new Error('You cannot use "main" as route name! It is reserved!');
   }
