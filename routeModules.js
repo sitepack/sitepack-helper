@@ -16,16 +16,9 @@ ${loaders.join(',\n')}
   console.log(`[Done] ${fileName}`);
 }
 
-function gen(opt) {
+function gen() {
   const modules = routes.map(function(route) {
-    let loader;
-    if (opt && opt.lazy) {
-      loader = `bundle?lazy&name=${route.name}!`;
-    } else {
-      loader = '';
-    }
-
-    return `${route.name}: require('${loader}${route.module}')`;
+    return `${route.name}: require('bundle?lazy&name=${route.name}!${route.module}')`;
   });
 
   write(modules);
