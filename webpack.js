@@ -12,7 +12,7 @@ function getAllModuleEntries() {
   });
 
   if (entries.layout) {
-    throw new Error('You cannot use "main" as route name! It is reserved!');
+    throw new Error('You cannot use "layout" as route name! It is reserved!');
   }
 
   entries.layout = ['./base/layout.js'];
