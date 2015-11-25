@@ -2,6 +2,14 @@
 
 const path = require('path');
 
+function addEntry(entries, name, entry) {
+  if (entries[name]) {
+    throw new Error(`You cannot use "${name}" as route name, it is reserved!`);
+  }
+
+  entries[name] = entry;
+}
+
 function getAllModuleEntries() {
   const routes = require(path.join(process.cwd(), 'config','route.js'));
 
@@ -11,11 +19,8 @@ function getAllModuleEntries() {
     entries[route.name] = [route.module];
   });
 
-  if (entries.layout) {
-    throw new Error('You cannot use "layout" as route name! It is reserved!');
-  }
-
-  entries.layout = ['./base/layout.js'];
+  addEntry(entries, 'prerender', ['./base/prerender.js']);
+  addEntry(entries, 'render', ['./base/render.js']);
 
   return entries;
 }

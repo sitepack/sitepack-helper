@@ -1,6 +1,6 @@
 {
   "name": "@sitepack/helper",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Helpers for sitepack apps.",
   "main": "webpack.js",
   "scripts": {
