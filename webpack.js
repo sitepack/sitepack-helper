@@ -16,7 +16,9 @@ function getAllModuleEntries() {
   const entries = {};
 
   routes.forEach(function(route) {
-    entries[route.name] = [route.module];
+    if (!route.skipPrerender) {
+      entries[route.name] = [route.module];
+    }
   });
 
   addEntry(entries, 'prerender', ['./base/prerender.js']);
